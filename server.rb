@@ -14,17 +14,10 @@ loop do                                             # Server runs forever
     lines << line.chomp
   end
   puts lines                                        # Output the full request to stdout
-  response =
-    "<!DOCTYPE html>
-    <html>
-      <head>
-        <title>My first web server</title>
-      </head>
-      <body>
-        <h1>My first web server</h1>
-        <p>Oh hey, this is my first HTML response!</p>
-      </body>
-  </html>"
+
+  filename = "index.html"
+  response = File.read(filename)
+  
   client.puts(response)
 
   client.puts(Time.now.ctime)                       # Output the current time to the client
